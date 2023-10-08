@@ -37,12 +37,19 @@ public class Login_jav extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (loginemail.getText().toString().equals("user") && loginpassword.getText().toString().equals("1234")) {
-                    Toast.makeText(Login_jav.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login_jav.this, MainActivity.class);
-                    startActivity(intent);
+                String uemail = loginemail.getText().toString();
+                String upassword = loginpassword.getText().toString();
+                Database db = new Database(getApplicationContext(), "Help_Dementia", null, 1);
+                if (uemail.length() == 0 || upassword.length() == 0) {
+                    Toast.makeText(Login_jav.this, "please fill username and password", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(Login_jav.this, "Login Failed!", Toast.LENGTH_SHORT).show();
+                    if (db.Login_jav(uemail, upassword) == 1) {
+                        Toast.makeText(Login_jav.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Login_jav.this, MainActivity.class));
+                    } else {
+                        Toast.makeText(Login_jav.this, "Invalid username and password", Toast.LENGTH_SHORT).show();
+
+                    }
                 }
             }
         });
