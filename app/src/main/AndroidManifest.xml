@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!---PERMISSIONS:-->
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,7 +24,11 @@
         </activity>
         <activity android:name=".Login_jav" android:exported="true"/>
         <activity android:name=".Sign_up" android:exported="true"/>
-        <activity android:name=".Index_jav" android:exported="true"/>
+        <activity android:name=".MainActivity" android:exported="true"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAaTrWQchBz-9D3Tn06x7DVrtkYmYz-1X0"/>
     </application>
 
 </manifest>

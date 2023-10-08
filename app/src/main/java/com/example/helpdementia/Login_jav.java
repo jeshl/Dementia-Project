@@ -39,7 +39,7 @@ public class Login_jav extends AppCompatActivity {
             public void onClick(View view) {
                 if (loginemail.getText().toString().equals("user") && loginpassword.getText().toString().equals("1234")) {
                     Toast.makeText(Login_jav.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login_jav.this, Index_jav.class);
+                    Intent intent = new Intent(Login_jav.this, MainActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(Login_jav.this, "Login Failed!", Toast.LENGTH_SHORT).show();
