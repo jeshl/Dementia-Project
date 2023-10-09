@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/person"
-        android:title="Person"
-        android:icon="@drawable/ic_launcher_foreground"/>
+        android:id="@+id/map"
+        android:title="Map"
+        android:icon="@drawable/baseline_map_24"/>
     <item
-        android:id="@+id/home"
-        android:title="Home"
-        android:icon="@drawable/ic_launcher_home_foreground"/>
+        android:id="@+id/alarm"
+        android:icon="@drawable/baseline_alarm_24"
+        android:title="Daily Routine"
+        />
     <item
-        android:id="@+id/settings"
-        android:title="Options"
-        android:icon="@drawable/ic_launcher_menu_foreground"/>
+        android:id="@+id/diary"
+        android:title="Diary"
+        android:icon="@drawable/baseline_diary_24"/>
 </menu>

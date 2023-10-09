@@ -24,39 +24,44 @@ public class MainActivity extends AppCompatActivity
 
         bottomNavigationView
                 .setOnNavigationItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.flFragment);
+
+        // Set the initial fragment to FirstFragment
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flFragment, firstFragment)
+                .commit();
+
     }
     FirstFragment firstFragment = new FirstFragment();
     SecondFragment secondFragment = new SecondFragment();
     ThirdFragment thirdFragment = new ThirdFragment();
 
     @Override
-    public boolean
-    onNavigationItemSelected(@NonNull MenuItem item)
+    public boolean onNavigationItemSelected(@NonNull MenuItem item)
     {
 
-        switch (item.getItemId()) {
-            case R.id.person:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.flFragment, firstFragment)
-                        .commit();
-                return true;
+        int itemId = item.getItemId();
 
-            case R.id.home:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.flFragment, secondFragment)
-                        .commit();
-                return true;
-
-            case R.id.settings:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.flFragment, thirdFragment)
-                        .commit();
-                return true;
+        if (itemId == R.id.map) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flFragment, firstFragment)
+                    .commit();
+            return true;
+        } else if (itemId == R.id.alarm) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flFragment, secondFragment)
+                    .commit();
+            return true;
+        } else if (itemId == R.id.diary) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flFragment, thirdFragment)
+                    .commit();
+            return true;
         }
+
         return false;
     }
 }

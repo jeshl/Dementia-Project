@@ -34,24 +34,23 @@ public class Sign_up extends Activity {
             String upassword = signpassword.getText().toString();
             String repass = repassword.getText().toString();
             Database db = new Database(getApplicationContext(),"Help_Dementia",null,1);
+
             if(uname.length()==0|| uemail.length()==0 || upassword.length()==0 || repass.length()==0 )
             {
                 Toast.makeText(this, "please fill all details", Toast.LENGTH_SHORT).show();
             }
-            if(upassword.compareTo(repass)==0)
-            {
-                if(upassword.length()>8)
-                {
-                    db.Sign_up(uname,uemail,upassword);
-                    Toast.makeText(this, "Registerd Sucessfully ", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, Login_jav.class));
+            else {
+                if (upassword.compareTo(repass) == 0) {
+                    if (upassword.length() >= 8) {
+                        db.Sign_up(uname, uemail, upassword);
+                        Toast.makeText(this, "Registerd Sucessfully ", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(this, Login_jav.class));
+                    } else {
+                        Toast.makeText(this, "your password must contains 8 character", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(this, "password didn't match", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    Toast.makeText(this, "your password must contains 8 character", Toast.LENGTH_SHORT).show();
-                }
-            }
-            else{
-                Toast.makeText(this, "password didn't match", Toast.LENGTH_SHORT).show();
             }
         });
 

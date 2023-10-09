@@ -9,7 +9,8 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".Login_jav"
-    android:background="@color/gray">
+    android:background="@drawable/dementia_text">
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

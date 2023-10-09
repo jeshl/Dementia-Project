@@ -19,8 +19,8 @@ public class Dashboard extends Activity {
         dashboardtxt.setText("Always Remember !! The Dementia Patient Is Not Giving You The Hard Time. \nThey Are Having The Hard Time !!");
 
         getstart.setOnClickListener(view -> {
-            Intent intent = new Intent(this, Login_jav.class);
-            startActivity(intent);
+          startActivity(new Intent(this, Login_jav.class));;
+
         });
     }
 }

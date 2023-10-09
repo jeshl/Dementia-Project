@@ -13,6 +13,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -20,8 +21,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 
+import java.util.Arrays;
 
 
 public class FirstFragment extends Fragment implements OnMapReadyCallback {
@@ -71,6 +76,37 @@ public class FirstFragment extends Fragment implements OnMapReadyCallback {
         // Initialize the Places API
         Places.initialize(requireContext(), "AIzaSyAaTrWQchBz-9D3Tn06x7DVrtkYmYz-1X0");
 
+
+
+
+        // Inside your onCreateView method after initializing Places
+        AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
+                getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
+
+        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG));
+
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(@NonNull Place place) {
+                // Handle the selected place (e.g., move the map to the selected location)
+                LatLng selectedLocation = place.getLatLng();
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation, 15.0f));
+            }
+
+            @Override
+            public void onError(@NonNull Status status) {
+                // Handle any errors that occur during the search
+            }
+        });
+
+
+
+
+
+
+
+
+
         // Create a PlacesClient instance
         PlacesClient placesClient = Places.createClient(requireContext());
 
@@ -103,12 +139,12 @@ public class FirstFragment extends Fragment implements OnMapReadyCallback {
         mMap = googleMap;
 
 
-        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
         // Add a marker in a specific location and move the camera
         LatLng location = new LatLng(26.5832862, 87.9533753); // Example: San Francisco
         mMap.addMarker(new MarkerOptions().position(location).title("My Home"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 20.0f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15.0f));
 
         enableMyLocation();
     }
