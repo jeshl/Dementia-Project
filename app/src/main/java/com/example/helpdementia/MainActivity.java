@@ -64,4 +64,21 @@ public class MainActivity extends AppCompatActivity
 
         return false;
     }
+
+
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+//            // Handle the result of the location permission request here
+//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                // Permission is granted, you can notify the fragment or perform any necessary action.
+//            } else {
+//                // Permission is denied, you can show a message to the user.
+//            }
+//        }
+//    }
+
+
+
 }

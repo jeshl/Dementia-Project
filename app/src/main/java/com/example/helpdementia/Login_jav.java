@@ -46,12 +46,15 @@ public class Login_jav extends AppCompatActivity {
 //                    if (db.Login_jav(uemail, upassword) == 1) {
 //                        Toast.makeText(Login_jav.this, "Login Successful", Toast.LENGTH_SHORT).show();
 //                        startActivity(new Intent(Login_jav.this, MainActivity.class));
+//
+//                        Intent intent = new Intent(Login_jav.this, MainActivity.class);
+//                        startActivity(intent);
 //                    } else {
 //                        Toast.makeText(Login_jav.this, "Invalid username and password", Toast.LENGTH_SHORT).show();
 //
 //                    }
 //                }
-
+//
                 startActivity(new Intent(Login_jav.this, MainActivity.class));
 
 
